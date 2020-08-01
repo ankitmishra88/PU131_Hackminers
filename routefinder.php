@@ -16,6 +16,7 @@
 $username = "root";
 $password = "";
 $dbname = "abc";
+/*** Change Database Credentials***/
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname) or die(mysqli_error());	
