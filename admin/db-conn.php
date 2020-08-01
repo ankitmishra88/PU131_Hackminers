@@ -1,8 +1,8 @@
 <?php
-    $servername = "sql213.epizy.com";
-$username = "epiz_24947486";
-$password = "8zQ77ysI7I";
-$dbname = "epiz_24947486_hackminers";
+    $servername = "server address";
+$username = "db username";
+$password = "your pwd";
+$dbname = "abc";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
