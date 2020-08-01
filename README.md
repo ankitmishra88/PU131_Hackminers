@@ -5,5 +5,6 @@
 ## Organization : TCI
 # Team Details :
 ### 1. Ankit Kumar(ankitmishra88)
+### 2. Amitoj Singh Ahuja(Amitojasa)
 
 
