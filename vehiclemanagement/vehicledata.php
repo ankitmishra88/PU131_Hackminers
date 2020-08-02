@@ -62,9 +62,9 @@
 		<select name="vehiclemode" id="vehiclemode">
 			<option value="LCV">LCV</option>
 			<option value="Truck">Truck</option>
-			<option value="Upto3Axle">Upto 3 Axle Vehicle</option>
-			<option value="4to6Axle">4 to 6 Axle Vehicle</option>
-			<option value="7ormore">7 or more Axle</option>
+			<option value="Upto 3 Axle">Upto 3 Axle Vehicle</option>
+			<option value="4 to 6 Axle">4 to 6 Axle Vehicle</option>
+			<option value="7 or more">7 or more Axle</option>
 			<option value="HCM/EME">HCM/EME</option>
 
 
