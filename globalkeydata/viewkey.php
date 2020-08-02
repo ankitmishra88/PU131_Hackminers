@@ -13,18 +13,20 @@
 
 	<div class="container mt-5">
 		<div class="row">
-			<a href="addkey.php" class="btn btn-primary">Add Key</a>
+			<a href="add-global.php" class="btn btn-primary">Add Key</a>
 		</div>
 	</div>
 
 	<div class="container mt-4">
 		<div class="row d-flex justify-content-left">
 			<div class="col-4"><h4>Key</h4></div>
+            <div class="col-4"><h4>Values</h4></div>
 			<div class="col-4"><h4>Operations</h4></div>
 		</div>
+        <hr />
 	</div>
 	<div class="container mt-4">
-		<div class="row">
+
 			<div class="allkeysdisplay">
 
 				<?php 
@@ -34,13 +36,14 @@
 						?>
 						<div class="row my-4 ">
 							<div class="col-4"><?php echo '<b>'.$result['myKeys'].'</b>'; ?></div>
+                            <div class="col-4"><?php echo '<b>'.$result['myValues'].'</b>'; ?></div>
 							
-							<div class="offset-2 col-2">
-								<a href="editkey.php?id=<?php echo $result['Identity'];?>">Edit</a>
+							<div class=" col-2">
+								<a href="edit-global.php?id=<?php echo $result['Identity'];?>">Edit</a>
 							</div>
 							
-							<div class="offset-2 col-2">
-								<a  href="deletekey.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>
+							<div class="col-2">
+								<a  href="/globalfactors/deletekey.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>
 							</div>
 						</div>
 
@@ -48,7 +51,7 @@
 					}
 				?>
 			</div>
-		</div>		
+
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
