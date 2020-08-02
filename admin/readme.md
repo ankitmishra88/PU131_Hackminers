@@ -1,0 +1,2 @@
+### Following folder keeps some of the admin functions and setting code and season-matrix (Cyclic effect of season statewise/zonewise)
+### Zone : A group of state is defined as zone , but there is only one state in a zone, if there is a single state in a zone , each cell in matrix will represent a single state.

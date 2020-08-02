@@ -19,7 +19,9 @@
 
 			mysqli_query($conn,$sq) or die(mysqli_error());
 			
+
 			echo "<script>window.location.href='view-global.php';</script>";
+
 		}	
 		
 	?>
@@ -34,7 +36,9 @@
 	<form method="post" >
 		<label for="mykey">Name Of Key</label>
 		<input type="text" name="mykey" id="mykey" placeholder="Name Of Global Key" value = "<?php echo $q['myKeys'] ?>" required>
+
 		<label for="myvalue">Cost</label>
+
 		<input type="number" name="myvalue" id="myvalue" placeholder="Value of Key" step="0.0001" value ="<?php echo $q['myValues'] ?>" required>
 		
 		<br />
