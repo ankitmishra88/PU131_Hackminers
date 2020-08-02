@@ -33,7 +33,7 @@
 				echo "<div class='row' my-2><div class='col-4'><b>EMI of Vehicle</b></div><div class='col-6'>".$result['EMI']." Rupee</div></div>";
 				echo "<div class='row' my-2><div class='col-4'><b>Number of Tyres of Vehicle</b></div><div class='col-6'>".$result['Tyre']."</div></div>";
 				echo "<div class='row' my-2><div class='col-4'><b>Maintenance Cost of Vehicle</b></div><div class='col-6'>".$result['Maintenance']." Rupee</div></div>";
-				echo "<div class='row' my-2><div class='col-4'><b>Mode of Vehicle</b></div><div class='col-6'>".$result['VehicleMode']." Rupee</div></div>";
+				echo "<div class='row' my-2><div class='col-4'><b>Mode of Vehicle</b></div><div class='col-6'>".$result['VehicleMode']."</div></div>";
 
 
 			?>
