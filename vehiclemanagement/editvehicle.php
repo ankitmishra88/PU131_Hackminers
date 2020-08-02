@@ -67,9 +67,9 @@
 		<select name="vehiclemode" id="vehiclemode" ">
 			<option value="LCV" <?php if ($q['VehicleMode'] == 'LCV'){ echo "".'selected'.""; } ?> >LCV</option>
 			<option value="Truck" <?php if ($q['VehicleMode'] == 'Truck'){ echo "".'selected'.""; } ?> >Truck</option>
-			<option value="Upto3Axle" <?php if ($q['VehicleMode'] == 'Upto3Axle'){ echo "".'selected'.""; } ?> >Upto 3 Axle Vehicle</option>
-			<option value="4to6Axle" <?php if ($q['VehicleMode'] == '4to6Axle'){ echo "".'selected'.""; } ?>>4 to 6 Axle Vehicle</option>
-			<option value="7ormore" <?php if ($q['VehicleMode'] == '7ormore'){ echo "".'selected'.""; } ?>>7 or more Axle</option>
+			<option value="Upto3Axle" <?php if ($q['VehicleMode'] == 'Upto 3 Axle'){ echo "".'selected'.""; } ?> >Upto 3 Axle Vehicle</option>
+			<option value="4to6Axle" <?php if ($q['VehicleMode'] == '4 to 6Axle'){ echo "".'selected'.""; } ?>>4 to 6 Axle Vehicle</option>
+			<option value="7ormore" <?php if ($q['VehicleMode'] == '7 or more'){ echo "".'selected'.""; } ?>>7 or more Axle</option>
 			<option value="HCM/EME" <?php if ($q['VehicleMode'] == 'HCM/EME'){ echo "".'selected'.""; } ?>>HCM/EME</option>
 		</select>
 		<br />
