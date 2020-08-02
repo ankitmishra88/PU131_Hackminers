@@ -27,12 +27,12 @@
 				echo "<div class='row my-2'><div class='col-4'><b>Name Of Vehicle</b></div><div class='col-6'>".$result['NameOfTruck']."</div></div>";
 				echo "<div class='row' my-2><div class='col-4'><b>Capacity of Vehicle</b></div><div class='col-6'>".$result['Capacity']." Tons</div></div>";
 				echo "<div class='row' my-2><div class='col-4'><b>Distance</b></div><div class='col-6'>".$result['Distance']." Km "."</div></div>";
-				echo "<div class='row' my-2><div class='col-4'><b>Mileage of Vehicle</b></div><div class='col-6'>".$result['Mileage']." Km/l </div></div>";
-				echo "<div class='row' my-2><div class='col-4'><b>Driver Cost</b></div><div class='col-6'>".$result['DriverCost']." Rupee</div></div>";
-				echo "<div class='row' my-2><div class='col-4'><b>Documentation Cost of Vehicle</b></div><div class='col-6'>".$result['DocumentationCost']." Rupee</div></div>";
-				echo "<div class='row' my-2><div class='col-4'><b>EMI of Vehicle</b></div><div class='col-6'>".$result['EMI']." Rupee</div></div>";
+				echo "<div class='row' my-2><div class='col-4'><b>Mileage of Vehicle</b></div><div class='col-6'>".$result['Mileage']." Km/L </div></div>";
+				echo "<div class='row' my-2><div class='col-4'><b>Driver Cost</b></div><div class='col-6'>".$result['DriverCost']." Rs</div></div>";
+				echo "<div class='row' my-2><div class='col-4'><b>Documentation Cost of Vehicle</b></div><div class='col-6'>".$result['DocumentationCost']." Rs</div></div>";
+				echo "<div class='row' my-2><div class='col-4'><b>EMI of Vehicle</b></div><div class='col-6'>".$result['EMI']." Rs</div></div>";
 				echo "<div class='row' my-2><div class='col-4'><b>Number of Tyres of Vehicle</b></div><div class='col-6'>".$result['Tyre']."</div></div>";
-				echo "<div class='row' my-2><div class='col-4'><b>Maintenance Cost of Vehicle</b></div><div class='col-6'>".$result['Maintenance']." Rupee</div></div>";
+				echo "<div class='row' my-2><div class='col-4'><b>Maintenance Cost of Vehicle</b></div><div class='col-6'>".$result['Maintenance']." Rs</div></div>";
 				echo "<div class='row' my-2><div class='col-4'><b>Mode of Vehicle</b></div><div class='col-6'>".$result['VehicleMode']."</div></div>";
 
 
