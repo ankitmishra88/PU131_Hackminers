@@ -19,7 +19,8 @@
 
 			mysqli_query($conn,$sq) or die(mysqli_error());
 			
-			echo "<script>window.location.href='view-global.php';exit();</script>";
+			echo "<script>window.location.href='view-global.php';</script>";
+			
 		}	
 		
 	?>
