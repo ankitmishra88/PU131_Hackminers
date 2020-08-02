@@ -10,13 +10,13 @@
 
 	<?php 
 	require "conn.inc.php";
-	// $conn = mysqli_connect('localhost','root','123','abc');
 		
 	?>
 
 	<div class="container mt-5">
 		<div class="row">
-			<a href="add-vehicle.php" class="btn btn-primary">Add Vehicle</a>
+			<a style="margin-left:2%;" href="add-vehicle.php" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Add Vehicle</a>
+            <!--<a href="vehicledata.php" class="btn btn-primary">Add Vehicle</a>-->
 		</div>
 	</div>
 
@@ -32,13 +32,16 @@
 						<div class="col-3"><?php echo '<b>'.$result['NameOfTruck'].'</b>'; ?></div>
 						<div class="col-3"><?php echo '<b>'.$result['Capacity'].'</b>'; ?></div> 
 						<div class="col-2">
-							<a href="edit-vehicle.php?id=<?php echo $result['Identity'];?>">Edit</a>
+							<a href="edit-vehicle.php?id=<?php echo $result['Identity'];?>"><i class="far fa-edit"></i></a>
+                           <!-- <a href="editvehicle.php?id=<?php echo $result['Identity'];?>">Edit</a>-->
 						</div>
-						<div class="col-2">
-							<a href="vehicle-detail.php?id=<?php echo $result['Identity'];?>">View</a>
+						<div class="col-1">
+							<a  href="vehicle-detail.php?id=<?php echo $result['Identity'];?>"><i class="far fa-eye"></i></a>
+                            <!--<a href="vehicledetail.php?id=<?php echo $result['Identity'];?>">View</a>-->
 						</div>
-						<div class="col-2">
-							<a  href="/vehiclemanagement/vehicledelete.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>
+						<div class="col-1">
+							<a   href="/vehiclemanagement/vehicledelete.php?id=<?php echo $result['Identity'] ?>"><i class="fas fa-trash"></i></span></a>
+                            <!--<a  href="vehicledelete.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>-->
 						</div>
 					</div>
 

@@ -13,7 +13,7 @@
 
 	<div class="container mt-5">
 		<div class="row">
-			<a href="viewvehicles.php" class="btn btn-info">Back</a>
+			<a href="view-vehicle.php" class="btn btn-info">Back</a>
 		</div>
 	</div>
 

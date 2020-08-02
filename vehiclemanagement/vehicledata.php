@@ -26,40 +26,38 @@
 			// Refresh Page without resubmit data
 			header("Refresh: 0");
 			// Redirect to the page to show page to show all vehicles
-			// header("Location: view-vehicle.php");
-			header("Location: viewvehicles.php");
+			header("Location: view-vehicle.php");
+			// header("Location: viewvehicles.php");
 		}
 		mysqli_close($conn);
 
 	?>
-	<div>
-		<br />
-		<a href="viewvehicles.php">View Vehicles</a>
-		<br />
-	</div>
-
+	<!--<div style="margin-left: 8%; width:80%;">
+		<a href="view-vehicle.php">View Vehicles</a>
+		</div>-->
+    <div style="margin-left: 8%; width:80%;">
 	<form method="post" action="" >
 		<label for="name">Name Of Truck</label>
-		<input type="text" name="name" id="name" placeholder="Name Of Truck" required>
+		<input class="form-control border-0 small"  type="text" name="name" id="name" placeholder="Name Of Truck" required>
 		<label for="capacity">Capacity</label>
-		<input type="number" name="capacity" id="capacity" placeholder="Capacity in tons" step="0.001" required>
+		<input class="form-control border-0 small" type="number" name="capacity" id="capacity" placeholder="Capacity in tons" step="0.001" required>
 		<label for="distance">Distance</label>
-		<input type="number" name="distance" id="distance" placeholder="Distance in Km" step="0.001" required>
+		<input class="form-control border-0 small" type="number" name="distance" id="distance" placeholder="Distance in Km" step="0.001" required>
 		<label for="mileage">Mileage</label>
-		<input type="number" name="mileage" id="mileage" placeholder="Mileage (Km/L)" step="0.001" required>
+		<input class="form-control border-0 small" type="number" name="mileage" id="mileage" placeholder="Mileage (Km/L)" step="0.001" required>
 		<label for="driverCost">Driver Cost</label>
-		<input type="number" name="driverCost" id="driverCost" placeholder="Driver Cost in Rupees (Cost/Km)" required>
+		<input class="form-control border-0 small" type="number" name="driverCost" id="driverCost" placeholder="Driver Cost in Rupees (Cost/Km)" required>
 		<br /> 
 		<label for="documents">Documents and Insurance Cost</label>
-		<input type="number" name="documents" id="documents" placeholder="Documents and Insurance Cost (Cost/Km)" step="0.001" required>
+		<input class="form-control border-0 small" type="number" name="documents" id="documents" placeholder="Documents and Insurance Cost (Cost/Km)" step="0.001" required>
 		<label for="emi">EMI</label>
-		<input type="number" name="emi" id="emi" placeholder="EMI in Rupees (Cost/Km)" step="0.001" required>
+		<input class="form-control border-0 small" type="number" name="emi" id="emi" placeholder="EMI in Rupees (Cost/Km)" step="0.001" required>
 		<label for="tyre">Tyre</label>
-		<input type="number" name="tyre" id="tyre" placeholder="Tyres" required>
+		<input class="form-control border-0 small" type="number" name="tyre" id="tyre" placeholder="Tyres" required>
 		<label for="maintenance">Maintenance</label>
-		<input type="number" name="maintenance" id="maintenance" placeholder="Cost of Maintenance (Cost/Km)" step="0.001" required>
+		<input class="form-control border-0 small" type="number" name="maintenance" id="maintenance" placeholder="Cost of Maintenance (Cost/Km)" step="0.001" required>
 		<label for="vehiclemode">Select mode of vehicle</label>
-		<select name="vehiclemode" id="vehiclemode">
+		<select class="form-control border-0 large" name="vehiclemode" id="vehiclemode">
 			<option value="LCV">LCV</option>
 			<option value="Truck">Truck</option>
 			<option value="Upto 3 Axle">Upto 3 Axle Vehicle</option>
@@ -70,6 +68,7 @@
 
 		</select>
 		<br />
-		<input type="submit" name="submit" value="Save"> 
+		<input class="d-none d-sm-inline-block btn btn btn-sm btn-primary shadow-sm" type="submit" name="submit" value="Save"> 
 	</form>
+    </div>
 </body>
