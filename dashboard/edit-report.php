@@ -16,7 +16,7 @@ if($type!=='Staff'){
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Reporting System - Admin Dashboard</title>
+  <title>Reporting System - Staff Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

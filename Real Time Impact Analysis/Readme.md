@@ -1,1 +1,0 @@
-This folder is for the ML model for prediting the Impact of Seasonal using Real Time Impact Analysis 
