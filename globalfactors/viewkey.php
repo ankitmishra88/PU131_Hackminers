@@ -43,7 +43,7 @@
 							</div>
 							
 							<div class="col-2">
-								<a  href="/globalfactors/deletekey.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>
+								<a  href="../globalfactors/deletekey.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>
 							</div>
 						</div>
 

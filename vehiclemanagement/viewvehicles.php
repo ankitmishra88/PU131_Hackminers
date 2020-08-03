@@ -40,7 +40,7 @@
                             <!--<a href="vehicledetail.php?id=<?php echo $result['Identity'];?>">View</a>-->
 						</div>
 						<div class="col-1">
-							<a   href="/vehiclemanagement/vehicledelete.php?id=<?php echo $result['Identity'] ?>"><i class="fas fa-trash"></i></span></a>
+							<a   href="../vehiclemanagement/vehicledelete.php?id=<?php echo $result['Identity'] ?>"><i class="fas fa-trash"></i></span></a>
                             <!--<a  href="vehicledelete.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>-->
 						</div>
 					</div>

@@ -52,8 +52,8 @@
 		<input class="form-control border-0 small" type="number" name="documents" id="documents" placeholder="Documents and Insurance Cost (Cost/Km)" step="0.001" required>
 		<label for="emi">EMI</label>
 		<input class="form-control border-0 small" type="number" name="emi" id="emi" placeholder="EMI in Rupees (Cost/Km)" step="0.001" required>
-		<label for="tyre">Tyre</label>
-		<input class="form-control border-0 small" type="number" name="tyre" id="tyre" placeholder="Tyres" required>
+		<label for="tyre">Tyres Maintenance Cost</label>
+		<input class="form-control border-0 small" type="number" name="tyre" id="tyre" placeholder="Tyres cost(cost/km)" required>
 		<label for="maintenance">Maintenance</label>
 		<input class="form-control border-0 small" type="number" name="maintenance" id="maintenance" placeholder="Cost of Maintenance (Cost/Km)" step="0.001" required>
 		<label for="vehiclemode">Select mode of vehicle</label>

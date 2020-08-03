@@ -88,7 +88,7 @@
 
           <!-- Content Row -->
          <div class="row">
-         <?include_once('../vehiclemanagement/viewvehicles.php');?>
+         <?php include_once('../vehiclemanagement/viewvehicles.php');?>
          </div>
         <!-- /.container-fluid -->
 

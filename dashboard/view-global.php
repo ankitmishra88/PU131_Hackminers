@@ -88,7 +88,7 @@
 
           <!-- Content Row -->
          <div class="row">
-         <?include_once('../globalfactors/viewkey.php');?>
+         <?php include_once('../globalfactors/viewkey.php');?>
          </div>
         <!-- /.container-fluid -->
 

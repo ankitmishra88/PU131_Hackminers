@@ -88,7 +88,7 @@
 
           <!-- Content Row -->
          <div class="row">
-         <?include_once('../globalfactors/addkey.php');?>
+         <?php include_once('../globalfactors/addkey.php');?>
          </div>
         <!-- /.container-fluid -->
 

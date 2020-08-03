@@ -59,8 +59,8 @@
 		<input class="form-control border-0 small" type="number" name="documents" id="documents"  placeholder="Documents and Insurance Cost (Cost/Km)" value="<?php echo $q['DocumentationCost'] ?>" step="0.001" required>
 		<label for="emi">EMI</label>
 		<input class="form-control border-0 small" type="number" name="emi" id="emi" placeholder="EMI in Rupees (Cost/Km)" value="<?php echo $q['EMI'] ?>" step="0.001" required>
-		<label for="tyre">Tyre</label>
-		<input class="form-control border-0 small" type="number" name="tyre" id="tyre" placeholder="Tyres" value="<?php echo $q['Tyre'] ?>" required>
+		<label for="tyre">Tyre Maintenance cost</label>
+		<input class="form-control border-0 small" type="number" name="tyre" id="tyre" placeholder="Tyres Maintenance cost (cost/km)" value="<?php echo $q['Tyre'] ?>" required>
 		<label for="maintenance">Maintenance</label>
 		<input class="form-control border-0 small"  type="number" name="maintenance" id="maintenance" placeholder="Cost of Maintenance (Cost/Km)" value="<?php echo $q['Maintenance'] ?>" step="0.001" required>
 		<label for="vehiclemode">Select mode of vehicle</label>

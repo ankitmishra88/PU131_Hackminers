@@ -89,7 +89,7 @@
 
           <!-- Content Row -->
          <div class="row">
-         <?include_once('../globalfactors/editkey.php');?>
+         <?php include_once('../globalfactors/editkey.php');?>
          </div>
         <!-- /.container-fluid -->
 
