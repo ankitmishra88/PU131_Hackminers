@@ -10,13 +10,14 @@
 	function displayAll($first,$second,$conn,$index){
        
 	   
-
-        $state11=mysqli_query($conn,"select State,City from locations where branch like '$first'") or die(mysqli_error($conn));
+			
+        $state11=mysqli_query($conn,"select * from locations where branch like '$first'") or die(mysqli_error($conn));
         $state11=mysqli_fetch_assoc($state11);
         $state1=$state11['State'];
         $city1=$state11['City'];
+		$stn1Id=$state11['Identity'];
         $weather1=getWeather($city1);
-        $state22=mysqli_query($conn,"select State,City  from locations where branch like '$second'") or die(mysqli_error($conn));
+        $state22=mysqli_query($conn,"select *  from locations where branch like '$second'") or die(mysqli_error($conn));
         $state22=mysqli_fetch_assoc($state22);
         $state2=$state22['State'];
         $city2=$state22['City'];
@@ -167,7 +168,7 @@
 <h3 class="heading-3 text-danger">Company Expenses</h3>
 <table class="table table-striped">
     <?php
-        $globalrs=mysqli_query($conn,"select * from companykeys") or die(mysqli_error($conn));
+        $globalrs=mysqli_query($conn,"select * from companykeys limit 3") or die(mysqli_error($conn));
         while($globalq=mysqli_fetch_assoc($globalrs)){
     ?>
     <tr><td> <b><?php echo $globalq['compkeys'];?> :</b></td><td><?php echo $globalq['compvalues'];?>%</td></tr>
@@ -202,7 +203,7 @@
 </tr>
 <?php $totalcostperkm=($cost/$km)+$fuelpkm+$vehicletype['DriverCost']+$vehicletype['Maintenance']+$vehicletype['Tyre']+$vehicletype['EMI'];
 $totalcost=$cost+($fuelpkm+$vehicletype['DriverCost']+$vehicletype['Maintenance']+$vehicletype['Tyre']+$vehicletype['EMI'])*$km;
-// $costperkg=$totalcost/($vehicletype['Capacity']*907);
+// $costperkg=$totalcost/($vehicletype['Capacity']*1000);
 ?>
 <?php
 $percentofglobal=0;
@@ -218,20 +219,60 @@ $globalpercentcostperkm=($totalcostperkm*$percentofglobal)/100;
 </tr>
 <?php $totalcostperkm+=$globalpercentcostperkm;
 $totalcost+=$globalpercentcostperkm*$km;
-$costperkg=$totalcost/($vehicletype['Capacity']*907);
+$costperkg=$totalcost/($vehicletype['Capacity']*1000);
 ?>
+
+
 
 <?php
 $totalcostperkm+=$globalpercentcostperkm;
 $totalcost+=$globalpercentcostperkm*$km;
-$costperkg=$totalcost/($vehicletype['Capacity']*907);
+$costperkg=$totalcost/($vehicletype['Capacity']*1000);
 ?>
+
+<?php
+$percentofcomp=0;
+        $comprperc=mysqli_query($conn,"select * from companykeys where compkeys like 'cost per percent for unpredictable factors'") or die(mysqli_error($conn));
+        $comprperc=mysqli_fetch_assoc($comprperc);
+		$effect=mysqli_query($conn,"select sum(Effect) from reports where BranchId=$stn1Id") or die(mysqli_error($conn));
+		$effect=mysqli_fetch_assoc($effect)['sum(Effect)'];
+    $percentofcomp+=$effect*($comprperc['compvalues']/$km); 
+$compcostpereffect=($totalcostperkm*$percentofcomp)/100;
+ ?>
+<tr>
+    <td>Unpredictable Factor Cost :</td><td>Rs. <?php echo $compcostpereffect; ?></td><td><?php echo $compcostpereffect*$km; ?></td>
+</tr>
+<?php
+$totalcostperkm+=$compcostpereffect;
+$totalcost+=$compcostpereffect*$km;
+$costperkg=$totalcost/($vehicletype['Capacity']*1000);
+?>
+
+
+<?php
+$percentofcomp=0;
+        $comprperc=mysqli_query($conn,"select * from companykeys where compkeys like 'cost per percent for demand'") or die(mysqli_error($conn));
+        $comprperc=mysqli_fetch_assoc($comprperc);
+		$demandeffect=mysqli_query($conn,"select * from demands where Hub_id=$stn1Id") or die(mysqli_error($conn));
+		$demandeffect=mysqli_fetch_assoc($demandeffect)['demand'];
+    $percentofcomp+=$demandeffect*($comprperc['compvalues']/$km); 
+$compcostperdemand=($totalcostperkm*$percentofcomp)/100;
+ ?>
+<tr>
+    <td>Demand Factor Cost :</td><td>Rs. <?php echo $compcostperdemand; ?></td><td><?php echo $compcostperdemand*$km; ?></td>
+</tr>
+<?php
+$totalcostperkm+=$compcostperdemand;
+$totalcost+=$compcostperdemand*$km;
+$costperkg=$totalcost/($vehicletype['Capacity']*1000);
+?>
+
 <tr>
     <td>Total cost :</td><td>Rs. <?php echo $totalcostperkm; ?></td><td><?php echo $totalcost; ?></td>
 </tr>
 <?php
 $percentofcomp=0;
-echo $weather;
+//echo $weather;
         $comprshand=mysqli_query($conn,"select * from companykeys where compkeys like 'handling'") or die(mysqli_error($conn));
         $comprshand=mysqli_fetch_assoc($comprshand);
     $percentofcomp+=$comprshand['compvalues']; 
@@ -244,7 +285,7 @@ $compcostperkmhandling=($totalcostperkm*$percentofcomp)/100;
 <?php
 $totalcostperkm+=$compcostperkmhandling;
 $totalcost+=$compcostperkmhandling*$km;
-$costperkg=$totalcost/($vehicletype['Capacity']*907);
+$costperkg=$totalcost/($vehicletype['Capacity']*1000);
 ?>
 <?php
 $percentofcomp=0;
@@ -260,7 +301,7 @@ $compcostperkmmargin=($totalcostperkm*$percentofcomp)/100;
 <?php
 $totalcostperkm+=$compcostperkmmargin;
 $totalcost+=$compcostperkmmargin*$km;
-$costperkg=$totalcost/($vehicletype['Capacity']*907);
+$costperkg=$totalcost/($vehicletype['Capacity']*1000);
 ?>
 
 <?php
@@ -272,19 +313,19 @@ $percentofcomp=0;
 $compcostperkmSURcharge=($totalcostperkm*$percentofcomp)/100;
  ?>
 <tr>
-    <td>Margin Charges :</td><td>Rs. <?php echo $compcostperkmSURcharge; ?></td><td><?php echo $compcostperkmSURcharge*$km; ?></td>
+    <td>Surcharges Charges :</td><td>Rs. <?php echo $compcostperkmSURcharge; ?></td><td><?php echo $compcostperkmSURcharge*$km; ?></td>
 </tr>
 <?php
 $totalcostperkm+=$compcostperkmSURcharge;
 $totalcost+=$compcostperkmSURcharge*$km;
-$costperkg=$totalcost/($vehicletype['Capacity']*907);
+$costperkg=$totalcost/($vehicletype['Capacity']*1000);
 ?>
 
 <tr>
-    <td>Total cost :</td><td>Rs. <?php echo $totalcostperkm; ?></td><td><?php echo $totalcost; ?></td>
+    <td><b>Total cost :</b></td><td>Rs. <?php echo $totalcostperkm; ?></td><td><?php echo $totalcost; ?></td>
 </tr>
 <tr>
-    <td>cost per kg :</td><td>Rs. <?php echo $costperkg; ?></td>
+    <td><b>cost per kg :</b></td><td>Rs. <?php echo $costperkg; ?></td>
 </tr>
 
 </table>
