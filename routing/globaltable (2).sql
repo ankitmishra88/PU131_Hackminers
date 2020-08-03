@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 02, 2020 at 11:56 AM
+-- Generation Time: Aug 03, 2020 at 11:31 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.31
 
@@ -24,43 +24,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `companykeys`
+-- Table structure for table `globaltable`
 --
 
-CREATE TABLE `companykeys` (
-  `id` int(11) NOT NULL,
-  `compkeys` varchar(100) NOT NULL,
-  `compvalues` float NOT NULL
+CREATE TABLE `globaltable` (
+  `Identity` int(11) NOT NULL,
+  `myKeys` varchar(200) DEFAULT NULL,
+  `myValues` double DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `companykeys`
+-- Dumping data for table `globaltable`
 --
 
-INSERT INTO `companykeys` (`id`, `compkeys`, `compvalues`) VALUES
-(1, 'Handling', 2),
-(2, 'Margin', 30),
-(5, 'surcharges', 20);
+INSERT INTO `globaltable` (`Identity`, `myKeys`, `myValues`) VALUES
+(1, 'National Permit & Taxes ', 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `companykeys`
+-- Indexes for table `globaltable`
 --
-ALTER TABLE `companykeys`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `globaltable`
+  ADD PRIMARY KEY (`Identity`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `companykeys`
+-- AUTO_INCREMENT for table `globaltable`
 --
-ALTER TABLE `companykeys`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `globaltable`
+  MODIFY `Identity` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
