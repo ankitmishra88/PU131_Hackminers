@@ -8,7 +8,7 @@
 
 
 	function displayAll($first,$second,$conn,$index){
-        require 'functions.php';
+       
 	   
 
         $state11=mysqli_query($conn,"select State,City from locations where branch like '$first'") or die(mysqli_error($conn));
