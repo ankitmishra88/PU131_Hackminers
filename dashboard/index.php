@@ -1,3 +1,4 @@
+<?php include_once('session.php');?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin Dashboard</title>
+  <title><?php echo $type;?> Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -46,7 +47,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            
           </div>
 
           <!-- Content Row -->
@@ -192,7 +193,7 @@
                 <ul>
                 <li><a href="https://tis.nhai.gov.in">Toll Data : NHAI Website</a></li>
                 <li><a href="https://openweathermap.org/api">Weather Data : Open Weather API</a></li>
-                <li><a href="https://openweathermap.org/api">Live Fuel Price : Good Returns Website / Economic Times</a></li>
+                <li><a href="https://goodreturns.in">Live Fuel Price : Good Returns Website </a></li>
                 </ul>
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="myPieChart"></canvas>
