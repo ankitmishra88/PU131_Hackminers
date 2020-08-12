@@ -6,13 +6,17 @@
 
 </head>
 <body>
+	<!-- File for showing complete detail of a vehicle  -->
 	<?php 
+		// establishing the connection
 		require 'conn.inc.php';
+		// getting id of vehicle whoes detail to be shown
         $id=$_GET['id'];
 	?>
 
 	<div class="container mt-5">
 		<div class="row">
+			<!-- button to go back to the view-vehicle.php page -->
 			<a href="view-vehicle.php" class="btn btn-info">Back</a>
 		</div>
 	</div>
@@ -20,10 +24,14 @@
 	<div class="container mt-4">
 		<div class="vehicleDetail">
 			<?php
+				// sql query to get record from vehicletable whose id specified in id variable
 				// $sql = "SELECT * FROM 'vehicletable' WHERE 'Identity' = $id" ;
-				$qu = mysqli_query($conn,"SELECT * FROM `vehicletable` WHERE `vehicletable`.`Identity` = $id" ) or die(mysqli_error());
-				$result =  mysqli_fetch_assoc($qu);
 
+				// runnig sql query for getting record from 'vehicletable' table from database
+				$qu = mysqli_query($conn,"SELECT * FROM `vehicletable` WHERE `vehicletable`.`Identity` = $id" ) or die(mysqli_error());
+				// getting the associative array of the record
+				$result =  mysqli_fetch_assoc($qu);
+				// display the detail of vehicle
 				echo "<div class='row my-2'><div class='col-4'><b>Name Of Vehicle</b></div><div class='col-6'>".$result['NameOfTruck']."</div></div>";
 				echo "<div class='row' my-2><div class='col-4'><b>Capacity of Vehicle</b></div><div class='col-6'>".$result['Capacity']." Tons</div></div>";
 				echo "<div class='row' my-2><div class='col-4'><b>Distance</b></div><div class='col-6'>".$result['Distance']." Km "."</div></div>";
