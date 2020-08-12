@@ -1,9 +1,13 @@
 <?php
+	// check for the $_SESSION
 	if(!isset($_SESSION)) 
     { 
+    	// start session
         session_start(); 
     } 
+    // if $_SESSION['login'] is set the redirect to welcome.php
 	if (@$_SESSION['login']==true){
+		// redirecting to welcome.php
 		echo "<script> window.location.href='welcome.php';</script>";
 		exit();
 	}
@@ -27,29 +31,35 @@
 	
 	</div>
 	<?php
+		// establishing connection
 		include_once('db-conn.php');
-		
+		// check for the authentication
 		if(isset($_POST['login'])){
+			// declaring variables and initializing it 
 			$loginas = mysqli_real_escape_string($conn, $_POST['loginAs']);
 			$username = mysqli_real_escape_string($conn, $_POST['username']);
 			$password = mysqli_real_escape_string($conn, $_POST['password']);
 			$password = md5($password);
 			$username = strtolower($username);
-		
+			// sql query to selecting record data where the username and loginas is eual to the $username nd $loginas variables resepectively
 			$sql = "select `BranchId` , `Password`,`LoginAs`  from users where Username = '$username' and LoginAs='$loginas' ";  
-
+			// run the query
         	$rs = mysqli_query($conn, $sql); 
+        	// fetch the corresponding associative array
 			$rs = mysqli_fetch_assoc($rs);
+			// check for the input password mathes with the password stored in database corresponding to that user 
 			if($password == $rs['Password']){
+				// if true then set the $_SESSION array  and then redirecting to dashboard
 				$_SESSION['login'] = true;
 				$_SESSION['loginas'] = $rs['LoginAs'];
 				$_SESSION['username'] = $rs['Username'];
 				$_SESSION['branchid'] = $rs['BranchId'];
-
+				// redirecting
 				echo "<script> window.location.href='/dashboard';</script>";
 				exit();
 			}
 			else{
+				// if password is not matched  then show alert 
 				echo "<script>alert('Password or Email does not match.')</script>"  ; 
 			}
 			
@@ -57,6 +67,7 @@
 	?>
 
 	<div class="container">
+		<!-- login form for login with username password, and type of user  -->
 		<form method="post" >
 			<div class="row d-flex justify-content-center">
 				<div class="col-4 mt-3">
