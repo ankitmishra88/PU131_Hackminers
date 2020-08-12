@@ -1,17 +1,21 @@
 <!doctype html>
 <html>
 <head>
+
 	<title>Edit Vehicle Detail</title>
 </head>
 <body>
+	<!--File for updating the vehicle detail -->
 	<?php 
+	// inserting php file conn.inc for extablishing connection
 	require "conn.inc.php";
 		// $conn = mysqli_connect('localhost','root','123','abc');
 	?>
 
 	<?php 
+		// get the id of vehicle to edit
 		$id=$_GET['id'];
-
+		// if update button clicked (updating the vehicle details)
 		if(isset($_POST['update'])){
 			$name=mysqli_real_escape_string($conn,$_POST['name']);
 			$capacity=mysqli_real_escape_string($conn,$_POST['capacity']);
@@ -23,13 +27,17 @@
 			$tyre=mysqli_real_escape_string($conn,$_POST['tyre']);
 			$maintenance=mysqli_real_escape_string($conn,$_POST['maintenance']);
 			$vehiclemode=mysqli_real_escape_string($conn,$_POST['vehiclemode']);
+
+			// sql query to update the record in table (vehicletable) where whose id specified in $id  variable 
 			$sq = "UPDATE `vehicletable` SET `NameOfTruck`= '$name',`Capacity`='$capacity',`Distance`='$distance',`Mileage`='$mileage',`DriverCost`='$driverCost',`DocumentationCost`='$documents',`EMI`='$emi',`Tyre`='$tyre',`Maintenance`='$maintenance',`VehicleMode`= '$vehiclemode' WHERE `vehicletable`.`Identity` = $id";
 
+			// run the query for updation if failed show the error message
 			mysqli_query($conn,$sq) or die(mysqli_error());
 			
 			
-
+			// refreshing the page 
 			header("Refresh: 1000");
+			// redirect to view-vehicle.php page 
 			header("Location: dashboard/view-vehicle.php");
 			// header("Location: viewvehicles.php");
 		}	
@@ -38,10 +46,13 @@
 	
 
 	<?php 
+		// query to get all detail of vehicle with id specified in $id variable 
 		$que = mysqli_query($conn , "SELECT * FROM `vehicletable` WHERE `Identity`= $id ") or die(mysqli_error());
+		// fetching the associative array 
 		$q=mysqli_fetch_assoc($que);
 		
 	?>
+	 <!-- displaying the form with the stored data of id = $id in database before updating -->
 	<div style="margin-left: 8%; width:80%;">
 	<form method="post" >
 		<label for="name">Name Of Truck</label>
