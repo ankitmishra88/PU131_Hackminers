@@ -47,9 +47,9 @@ if(isset($_POST['submit'])){  //if block starts
 	// the value we get from input field is in format of branchCode,city,state so we have to get only the branchCode
 
 
-	//getting the to field branch code
-	$from=trim(explode(",",mysqli_real_escape_string($conn,$_POST['from']))[0]); 
 	//getting the from field branch code
+	$from=trim(explode(",",mysqli_real_escape_string($conn,$_POST['from']))[0]); 
+	//getting the to field branch code
 	$to=trim(explode(",",mysqli_real_escape_string($conn,$_POST['to']))[0]);
 
 
