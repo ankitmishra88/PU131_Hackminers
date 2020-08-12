@@ -6,13 +6,16 @@
 
 </head>
 <body>
+	<!-- File to view all keys -->
 	<?php 
-	require "conn.inc.php";
-		
+		// establishing new connection
+		require "conn.inc.php";
 	?>
 
 	<div class="container mt-5">
 		<div class="row">
+
+			<!-- link for redirecting to add-global.php file to add ney key-->
 			<a href="add-global.php" class="btn btn-primary">Add Key</a>
 		</div>
 	</div>
@@ -30,24 +33,31 @@
 			<div class="allkeysdisplay">
 
 				<?php 
+					// sql query to gey all keys from 'globaltable' sorting by the key name in desending order 
 					$sql = "SELECT * FROM `globaltable` ORDER BY 'myKeys' DESC";
+					// running the query
 					$query = mysqli_query($conn,$sql);
+					// starting the while loop for getting record one by one
 					while($result = mysqli_fetch_assoc($query)){
 						?>
+						<!-- displaying every global key with their value and links for operation lik edit and delete -->
 						<div class="row my-4 ">
 							<div class="col-4"><?php echo '<b>'.$result['myKeys'].'</b>'; ?></div>
                             <div class="col-4"><?php echo '<b>'.$result['myValues'].'</b>'; ?></div>
 							
 							<div class=" col-2">
+								<!-- link for editting global key with its id defined in link -->
 								<a href="edit-global.php?id=<?php echo $result['Identity'];?>">Edit</a>
 							</div>
 							
 							<div class="col-2">
-								<a  href="/globalfactors/deletekey.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>
+								<!-- link for deleting global key with its id defined in link -->
+								<a  href="../globalfactors/deletekey.php?id=<?php echo $result['Identity'] ?>">Delete</span></a>
 							</div>
 						</div>
 
 				<?php
+				// end of while loop
 					}
 				?>
 			</div>
