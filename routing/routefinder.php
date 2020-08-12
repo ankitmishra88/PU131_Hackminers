@@ -4,11 +4,13 @@ require 'conn.inc.php';
 
 ?>
 <?php	
-$TOTALCOST=0;
-require 'functionhelper.php';
- require 'functions.php';
+$TOTALCOST=0; // Initializing totalcost as 0
+require 'functionhelper.php';  // including functionhelper for displayAll() function
+ require 'functions.php';	// including functions for getweather() function
 ?>
 
+
+<!-- basic HTML code -->
 
 
 <!DOCTYPE html>
@@ -28,7 +30,7 @@ require 'functionhelper.php';
 
 
 
-
+<!-- Basic html code  end -->
 
 
 
@@ -37,14 +39,22 @@ require 'functionhelper.php';
 
 <?php
 
-if(isset($_POST['submit'])){
+// the if statement runs when submit button is clicked in the form
 
-	$from=trim(explode(",",mysqli_real_escape_string($conn,$_POST['from']))[0]);
+if(isset($_POST['submit'])){  //if block starts
+
+
+	// the value we get from input field is in format of branchCode,city,state so we have to get only the branchCode
+
+
+	//getting the to field branch code
+	$from=trim(explode(",",mysqli_real_escape_string($conn,$_POST['from']))[0]); 
+	//getting the from field branch code
 	$to=trim(explode(",",mysqli_real_escape_string($conn,$_POST['to']))[0]);
 
 
 
-
+	//mysql query to get the route between two stations i.e from and to
 	$q=mysqli_query($conn,"select * from rate_card where `FROM_STN` like '$from' and (TPT_1 like '$to' or TPT_2 like '$to' or TPT_3 like '$to' or TPT_4 like '$to' or TPT_5 like '$to' or TO_STN like '$to')
 	union
 	select * from rate_card where TPT_1 like '$from' and (TPT_2 like '$to' or TPT_3 like '$to' or TPT_4 like '$to' or TPT_5 like '$to' or TO_STN like '$to')
@@ -60,7 +70,11 @@ if(isset($_POST['submit'])){
 
 
 ?>
+
+<!-- html table to show the route -->
+<!-- table starts -->
 <table class='table bordered'>
+	<!-- table headings -->
 	<tr class="text-primary">
 		<th>FROM_STN</th>
 		<th>TPT_1</th>
@@ -70,12 +84,19 @@ if(isset($_POST['submit'])){
 		<th>TPT_5</th>
 		<th>TO_STN</th>
 	</tr>
+
 <?php
 // while($qr=mysqli_fetch_assoc($q)){
+
+	// fetching the result from mysql query
     $qr=mysqli_fetch_assoc($q);
+
+    //creating an empty array for all the stations on the route we got from sql query
     $ar=array();
 ?>
 
+
+	<!-- displaying the route in the table we started above -->
 	<tr>
 		<td><?php echo $qr['FROM_STN']; ?></td>
 		<td><?php echo $qr['TPT_1']; ?></td>
@@ -116,26 +137,33 @@ if(isset($_POST['submit'])){
 // } // end of while
 ?>
 </table>
+<!-- end of table -->
+
+
 <div id="accordion">
 <?php
 
 
-	$countt=0;
-	$co=0;
+	$countt=0; // keeping a flag to know the exact from and to from the route
+	$co=0;// keeping a counter only for frontend purpose 
+
+	// iterating over the whole array of stopping locations on a route
 	for($i=0;$i<count($ar)-1;$i++){
 
-		$first=$ar[$i];
-		if($first==$from){
+		$first=$ar[$i]; // first station
+
+		if($first==$from){ // if first is equal to from then only we are going to start doing something else it will just pass
 			$countt=1;
 		}
-		if($first==$to){
+		if($first==$to){// if first is equal to to it means its last stationso we set flag as 0 as donot want any thing to happen
 			$countt=0;
 		}
-		$second=$ar[$i+1];
+		$second=$ar[$i+1]; // second station
 		if($countt==1){
-
-			$TOTALCOST+=displayAll($first,$second,$conn,$co+1);
-			$co++;
+			// now if flag is 1 then we want the calcultion to take place
+			$TOTALCOST+=displayAll($first,$second,$conn,$co+1); // calling displayAll function from functionshelper.php passing station1, station2, database connection and counter
+			// add the returned value to TOTALCOST
+			$co++; // increment the counter
 		}
 	}
 
@@ -143,10 +171,14 @@ if(isset($_POST['submit'])){
 }
 
 ?>
+
+<!-- diplaying the total cost -->
 <h3 class="bg-secondary text-white p-2 rounded mt-3">Total Cost per kg: Rs. <?php echo $TOTALCOST;?></h3>
 </div>
 
 <?php 
+
+	// creating a locationaarray whith branchcode,city and state to display as suggestion when user type in input field
 	$locationArray = array();
 	$sql = 'select locations.Identity, locations.Branch, locations.City, statenames.StateName  from locations inner join statenames on statenames.StateCode = locations.State ';
 	$record = mysqli_query($conn , $sql);
@@ -155,9 +187,15 @@ if(isset($_POST['submit'])){
 	} 
 ?>
 
+
+<!-- creating a form  for from and to -->
 <form method="POST">
 
+
+	<!-- from input field -->
 	<input list="locations" type="text" class="form-control my-3" name="from" placeholder="from">
+
+	<!-- suggestion list -->
 	<datalist id="locations">
 				<option disabled selected>--Select Location--</option>
 				<?php 
@@ -168,14 +206,18 @@ if(isset($_POST['submit'])){
 				
 	</datalist>
 
+
+	<!-- // to input field -->
 	<input class="form-control my-3"  list="locations" type="text" name="to"  placeholder="to">
 
+<!-- submit button -->
 	<input class="btn btn-danger" type="submit" value="submit" name="submit">
 
 </form>	
-
+<!-- end of form -->
 
 
 </body>
 </html>
 
+<!-- end of html -->
