@@ -168,7 +168,7 @@ if(isset($_POST['submit'])){  //if block starts
 	}
 
 	
-}
+} //end of if block
 
 ?>
 
