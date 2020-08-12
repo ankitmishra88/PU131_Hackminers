@@ -287,7 +287,7 @@ $totalcost=$cost+($fuelpkm+$vehicletype['DriverCost']+$vehicletype['Maintenance'
     	$effect=mysqli_fetch_assoc($effect)['sum(Effect)'];
         // effect * cost per percent for unpredictable factors
         $percentofcomp+=$effect*($comprperc['compvalues']/$km); 
-        $compcostpereffect=($totalcostperkm*$percentofcomp)/100;
+        $compcostpereffect=$percentofcomp;
  ?>
 
  <!-- unpredictable factors cost per km and total -->
@@ -314,7 +314,7 @@ $totalcost=$cost+($fuelpkm+$vehicletype['DriverCost']+$vehicletype['Maintenance'
 
         // demand * cost per percent for demand
         $percentofcomp+=$demandeffect*($comprperc['compvalues']/$km); 
-        $compcostperdemand=($totalcostperkm*$percentofcomp)/100;
+        $compcostpereffect=$percentofcomp;
  ?>
 
 <!-- demand factors cost per km and total -->
