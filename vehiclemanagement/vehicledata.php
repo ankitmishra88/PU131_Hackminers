@@ -4,13 +4,17 @@
 	<title>Vehicle Detail</title>
 </head>
 <body>
+	<!-- File for entering new vehicle details in database -->
 	<?php 
+	// establish the connection with database by including php file (conn.inc.php)
 	require "conn.inc.php";
 		// $conn = mysqli_connect('localhost','root','123','abc');
 	?>
 
 	<?php 
+		// inserting data in database when the submit button is clicked
 		if(isset($_POST['submit'])){
+			// declare and initilize different variables 
 			$name=mysqli_real_escape_string($conn,$_POST['name']);
 			$capacity=mysqli_real_escape_string($conn,$_POST['capacity']);
 			$distance=mysqli_real_escape_string($conn,$_POST['distance']);
@@ -21,20 +25,21 @@
 			$tyre=mysqli_real_escape_string($conn,$_POST['tyre']);
 			$maintenance=mysqli_real_escape_string($conn,$_POST['maintenance']);
 			$vehiclemode=mysqli_real_escape_string($conn,$_POST['vehiclemode']);
+
+			// sql query to insert form data to table (vehicletable) in database 
 			$sql = "INSERT INTO `vehicletable`( `NameOfTruck`, `Capacity`, `Distance`, `Mileage`, `DriverCost`, `DocumentationCost`, `EMI`, `Tyre`, `Maintenance`, `VehicleMode` ) VALUES ('$name' , '$capacity' , '$distance' , '$mileage', '$driverCost' , '$documents' , '$emi', '$tyre' , '$maintenance','$vehiclemode' )";
+			// run the query and check for the error
 			mysqli_query($conn,$sql) or die(mysqli_error());
 			// Refresh Page without resubmit data
 			header("Refresh: 0");
-			// Redirect to the page to show page to show all vehicles
+			// Redirect to the page to viewvehicles page to show all vehicles
 			header("Location: view-vehicle.php");
 			// header("Location: viewvehicles.php");
 		}
 		mysqli_close($conn);
 
 	?>
-	<!--<div style="margin-left: 8%; width:80%;">
-		<a href="view-vehicle.php">View Vehicles</a>
-		</div>-->
+	<!-- Creating form for getting the vehicle details -->
     <div style="margin-left: 8%; width:80%;">
 	<form method="post" action="" >
 		<label for="name">Name Of Truck</label>
@@ -64,8 +69,6 @@
 			<option value="4 to 6Axle">4 to 6 Axle Vehicle</option>
 			<option value="7 or more">7 or more Axle</option>
 			<option value="HCM/EME">HCM/EME</option>
-
-
 		</select>
 		<br />
 		<input class="d-none d-sm-inline-block btn btn btn-sm btn-primary shadow-sm" type="submit" name="submit" value="Save"> 
