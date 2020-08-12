@@ -1,14 +1,18 @@
 <?php
+	// check if the $_SESSION is set or not 
+	//if no then start session
 	if(!isset($_SESSION)) 
     { 
         session_start(); 
     }
+    // if login in session is not true then redirect to login.php
     if (@$_SESSION['login']!=true){
-        echo "<script> window.location.href='../Users/login.php';</script>";
+        echo "<script> window.location.href='/dashboard/login/login.php';</script>";
         exit();
     }
 ?>
 <?php
+	// if login is true then get the branchid which is stored in session at the time of login
     if (@$_SESSION['login']==true){
         $branchid=$_SESSION['branchid'];
     }
@@ -22,6 +26,7 @@
 
 </head>
 <body>
+	<!-- File to add new report  -->
 	<div class="container mt-3 mb-1">
 		<div class="row d-flex justify-content-center">
 			<h1 class="center">Report</h1>
@@ -29,19 +34,36 @@
 	</div>
 	
 	<?php 
-		$conn = mysqli_connect('localhost','root','123','abc');
+		//$conn = mysqli_connect('localhost','root','123','abc');
+        //include_once('../login/db-conn.php');
 	?>
+    <?php
+    // establish connection
+    $servername = "sql213.epizy.com";
+$username = "epiz_24947486";
+$password = "8zQ77ysI7I";
+$dbname = "epiz_24947486_hackminers";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+?>
 	<?php 
-		
+		// Inserting new report record in reports table
 		if(isset($_POST['submit'])){
 			$problem = mysqli_real_escape_string($conn,$_POST['problem']);
 			$effect = mysqli_real_escape_string($conn, $_POST['effect']);
-
+			// query for inserting record in eports table
 			$sql = "INSERT INTO `reports`( `Problem`, `Effect`, `BranchId`) VALUES ('$problem' , '$effect' ,'$branchid')";
+			// running the query
 			mysqli_query($conn, $sql ) or die(mysqli_error()); 
 		}
 	?>
-	
+	<!-- Form for getting the report detail from the user -->
 	<div class="container mt-4">
 		<form method="post">
 			<div class="row d-flex justify-content-center">
